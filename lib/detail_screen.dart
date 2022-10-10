@@ -6,9 +6,12 @@ class DetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // router location abbBar title 설정
+    final router = GoRouter.of(context);
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('DetailScreen'),
+        title: Text(router.location.toString()),
         backgroundColor: Colors.red,
         elevation: 0,
       ),
