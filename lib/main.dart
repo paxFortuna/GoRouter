@@ -29,15 +29,20 @@ class MyApp extends StatelessWidget {
           path: '/',
           builder: (context, state) => const HomeScreen(),
           routes: [
+            // GoRoute(
+            //   path: 'detail',
+            //   builder: (context, state) => const DetailScreen(),
+            // ),
             GoRoute(
-              path: 'detail',
-              builder: (context, state) => const DetailScreen(),
+              path: 'detail/:id',
+              builder: (context, state) =>
+                  DetailScreen(id: state.params['id']!),
             ),
             GoRoute(
               path: 'modal',
-              pageBuilder: (context, state) => const MaterialPage(
+              pageBuilder: (context, state) => MaterialPage(
                 fullscreenDialog: true,
-                child: ModalScreen(),
+                child: ModalScreen(blog:state.extra.toString()),
               ),
             ),
           ],

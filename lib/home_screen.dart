@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -21,15 +23,25 @@ class HomeScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               ElevatedButton(
-                onPressed: () => context.go('/detail'),
-                child: const Text('go /detail', style: TextStyle(fontSize: 20),),),
+                onPressed: () {
+                  var id = Random().nextInt(100);
+                  context.go('/detail/$id');
+                },
+                child: const Text('go /detail/:id', style: TextStyle(fontSize: 20),),),
               const SizedBox(height: 32),
               ElevatedButton(
                 onPressed: () => context.push('/detail'),
                 child: const Text('push /detail', style: TextStyle(fontSize: 20)),),
               const SizedBox(height: 32),
+              // ElevatedButton(
+              //   onPressed: () => context.go('/modal'),
+              //   child: const Text('go /modal', style: TextStyle(fontSize: 20)),),
+              // const SizedBox(height: 32),
               ElevatedButton(
-                onPressed: () => context.go('/modal'),
+                onPressed: () {
+                  var blog = 'cutie';
+                  context.go('/modal', extra: blog);
+                },
                 child: const Text('go /modal', style: TextStyle(fontSize: 20)),),
               const SizedBox(height: 32),
             ],
